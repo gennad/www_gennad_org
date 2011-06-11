@@ -49,3 +49,4 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'gennadapp', 'templates'),)
 
 ROOT_URLCONF = 'urls'
+from keys import *

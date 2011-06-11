@@ -7,6 +7,13 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', include('gennadapp.urls')),
+    #(r'^twitter/connect/$', include('gennadapp.urls')),
+    (r'^twitter/connect/$', 'gennadapp.views.twitter_connect'),
+
+
+
+
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     ('^_ah/warmup$', 'djangoappengine.views.warmup'),
     ('^$', 'django.views.generic.simple.direct_to_template', {'template': 'home.html'}),
     # Uncomment the admin/doc line below to enable admin documentation:
