@@ -10,6 +10,9 @@ inbound_services:
 - warmup
 
 handlers:
+- url: /static
+  static_dir: gennadapp/static
+
 - url: /_ah/queue/deferred
   script: djangoappengine/deferred/handler.py
   login: admin
