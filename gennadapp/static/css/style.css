@@ -1,0 +1,41 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.content {
+  color = black;
+}
+
+h1 {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+
+#header {
+    color: #efd; 
+    background: 	#87CEEB; 
+    border-bottom: 2px solid black;
+}
+
+#content {
+    padding-top: 30px;
+    border-top: 2px solid black;
+    color: black; 
+    background: #EEEEEE;
+}
