@@ -1,12 +1,17 @@
 from django.db import models
 from django.contrib import admin
 
+class Category(models.Model):
+    name = models.CharField(max_length=150)
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
     timestamp = models.DateTimeField()
+    categories = models.ManyToManyField('Category')
     class Meta:
         ordering = ('-timestamp',)
+
 
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp')

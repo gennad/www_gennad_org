@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
-from gennadapp.views import archive, twitter_connect
+
+from django.contrib import admin
+from gennadapp.views import archive
 
 urlpatterns = patterns(
     '',

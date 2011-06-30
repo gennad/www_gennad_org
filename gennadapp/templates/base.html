@@ -21,12 +21,25 @@
     <img src="/static/img/dot.png"/>
     com
     </div>
+
+    <div>
+    {% block header %}
+    Заголовок
+    {% endblock %}
+    </div>
+
+
+    <div>
+        <a href="/python/">Python</a>
+        <a href="/django/">Django</a>
+        <a href="/algorithms/">Algorithms</a>
+        <a href="/twisted/">Twisted</a>
+        <a href="/gevent/">Gevent</a>
+    </div>
+
+
     <div id="content">
-        I am a Python engineer.
-        <ul>
-            <li>1</li>
-            <li>2</li>
-        </ul>
+
     {% block content %}
     {% endblock %}
     <img src="/static/img/gennad_zlobin.jpg"/>

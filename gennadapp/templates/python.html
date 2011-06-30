@@ -5,9 +5,13 @@ This website contains tutorial about Python, Django, web development and everyth
 {% endblock %}
 
 {% block content %}
-{% for post in posts %}
-<h2>{{post.title}}</h2>
-<p>{{post.timestam|date:"1, F, jS"}}</p>
-<p>{{post.body}}</p>
-{% endfor %}
+{% if posts %}
+    {% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <p>{{post.timestam|date:"1, F, jS"}}</p>
+    <p>{{post.body}}</p>
+    {% endfor %}
+{% else %}
+    <h2>No posts yet.</h2>
+{% endif %}
 {% endblock %}

@@ -1,12 +1,12 @@
 from django.shortcuts import render_to_response
 from django.template import loader
 from django.template import Context, RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from models import BlogPost, Client_Twitter
 
 from django.conf import settings
 
-import urlparse
+import cgi
 
 def index(request):
   return render_to_response(
@@ -20,6 +20,50 @@ def archive(request):
   c = Context( {'posts': posts })
   return HttpResponse(t.render(c))
 
+
+def python(request):
+  posts = BlogPost.objects.filter(categories__name='python')
+
+  return render_to_response(
+      'python.html',
+      {'posts': posts},
+      context_instance = RequestContext(request)
+  )
+
+def django(request):
+  posts = BlogPost.objects.filter(categories__name='django')
+
+  return render_to_response(
+    'django.html',
+    {'posts': posts},
+    context_instance = RequestContext(request)
+  )
+
+def algorithms(request):
+  posts = BlogPost.objects.filter(categories__name='algorithms')
+
+  return render_to_response(
+    'algorithms.html',
+    {'posts': posts},
+    context_instance = RequestContext(request)
+  )
+
+
+def twisted(request):
+  posts = BlogPost.objects.filter(categories__name='algorithms')
+  return render_to_response(
+    'twisted.html',
+    {'posts': posts},
+    context_instance = RequestContext(request)
+  )
+
+def gevent(request):
+  posts = BlogPost.objects.filter(categories__name='algorithms')
+  return render_to_response(
+    'gevent.html',
+    {'posts': posts},
+    context_instance = RequestContext(request)
+  )
 
 import oauth2 as oauth
 
@@ -46,7 +90,7 @@ def twitter_connect(request):
     if ('oauth_verifier' not in request.GET):
         client = oauth.Client(consumer)
         resp, content = client.request(request_token_url, "GET")
-        request_token = dict(urlparse.parse_qsl(content))
+        request_token = dict(cgi.parse_qsl(content))
         roauth_token = request_token['oauth_token']
         roauth_token_secret = request_token['oauth_token_secret']
         request.session['roauth_token'] = roauth_token
@@ -62,7 +106,7 @@ def twitter_connect(request):
 
 
         resp, content = client.request(access_token_url, "POST")
-        access_token = dict(urlparse.parse_qsl(content))
+        access_token = dict(cgi.parse_qsl(content))
 
 
         del request.session['roauth_token']
@@ -86,5 +130,3 @@ def twitter_connect(request):
     data = {'status':'I just checked at 24 hr Fitness'}
     request_uri = 'https://api.twitter.com/1/statuses/update.json'
     resp, content = client.request(request_uri, 'POST', urllib.urlencode(data))
-
-
