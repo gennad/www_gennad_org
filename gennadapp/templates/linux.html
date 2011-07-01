@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block header %}
+This website contains tutorial about Python, Django, web development and everything else that is related to Python programming language.
+{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+<h2>{{post.title}}</h2>
+<p>{{post.timestam|date:"1, F, jS"}}</p>
+<p>{{post.body}}</p>
+{% endfor %}
+{% endblock %}

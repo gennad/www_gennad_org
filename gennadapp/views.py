@@ -65,6 +65,14 @@ def gevent(request):
     context_instance = RequestContext(request)
   )
 
+def linux(request):
+  posts = BlogPost.objects.filter(categories__name='linux')
+  return render_to_response(
+    'linux.html',
+    {'posts': posts},
+    context_instance = RequestContext(request)
+  )
+
 import oauth2 as oauth
 
 def twitter_connect(request):
